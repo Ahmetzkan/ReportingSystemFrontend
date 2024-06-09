@@ -1,0 +1,127 @@
+.managementSystem {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top:50px;
+  }
+  
+  .report-form {
+    width: 80%;
+    border: 1px solid #ccc;
+    border-radius: 15px;
+    padding: 20px;
+    margin-bottom: 20px;
+  }
+  
+  .report-form h6 {
+    margin-bottom: 10px;
+  }
+  
+  .report-form .form-group {
+    margin-bottom: 10px;
+    font-weight: 500;
+  }
+  
+  .report-form .form-control {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 15px;
+  }
+  
+  .report-form .btn-primary {
+    padding: 10px;
+    background-color: #f86434;
+    border:none;
+}
+  
+  .report-form .btn-primary:hover {
+    background-color: rgb(99, 100, 150);
+}
+  
+  .report-list {
+    width: 80%;
+    border: 1px solid #ccc;
+    border-radius: 15px;
+    padding:10px;
+  }
+  
+  .report-list h6 {
+    margin-bottom: 10px;
+  }
+  
+  .report-item {
+    border: 1px solid #ccc;
+    border-radius: 15px;
+    height:auto;
+    margin-bottom: 10px;
+    font-weight: 600;
+    text-align: left;
+    padding:10px;
+  }
+
+  .report-item h6 {
+  font-weight: 500;
+  font-size:25px;
+  
+  }
+  .pagination {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+  }
+  
+  .pagination-list {
+    display: flex;
+  }
+  
+  .page-item {
+    margin: 0 5px;
+  }
+  
+  .page-link {
+    display: block;
+    padding: 6px 12px;
+    text-decoration: none;
+    color: black;
+    background-color: #fff;
+    border: 1px solid black;
+  }
+  
+  .page-link:hover {
+    background-color: black;
+    color: #fff;
+  }
+
+  .modal-dialog {
+    display: flex;
+    align-items: center;
+    min-height: calc(70vh); 
+    padding: 20px;
+  }
+  
+  .modal-content {
+    margin: auto; 
+  }
+
+  .btn-primary {
+    background-color: #f86434;
+    color: white; 
+    margin-top:10px;
+    border:none;
+  }
+
+  .btn-primary:hover {
+    background-color: rgb(99, 100, 150);
+  }
+
+.report-actions{
+  display: flex;
+  margin-bottom: 20px;
+  gap:10px;
+}
+
+.filter-container{
+  display: flex;
+  gap:10px;
+}

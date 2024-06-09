@@ -22,14 +22,14 @@ export const handleError = (error: any) => {
                 handleAuthError(error.response.data);
                 break;
             default:
-                 //handleDefault(error);
+                //handleDefault(error);
                 break;
         }
     }
 };
 
 export const handleBusinessError = (error: any) => {
-    toast.error(error.detail);
+    Toaster({ name: error.detail });
 };
 export const handleValidationError = (error: any) => {
     Object.keys(error.errors).forEach(key => {
@@ -41,7 +41,7 @@ export const handleAuthError = (error: any) => {
 }
 
 const handleDefault = (error: any) => {
-    Toaster({name : UNKNOWN_ERROR});
+    Toaster({ name: UNKNOWN_ERROR });
 };
 
 export { handleDefault };

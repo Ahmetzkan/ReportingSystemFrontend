@@ -10,7 +10,7 @@ const CustomToaster = (props: any) => (
             <span> Reporting System</span>
         </div>
         <div className="customCopyToastUrl">
-            <span>• {props.name}</span>
+            <span>{props.name}</span>
         </div>
     </div>
 );
