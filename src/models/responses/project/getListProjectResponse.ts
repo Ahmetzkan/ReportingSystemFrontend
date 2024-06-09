@@ -7,5 +7,4 @@ export default interface GetListProjectResponse {
     endDate: Date;
     status: string;
     createdDate: Date;
-    updatedDate: Date;
 }

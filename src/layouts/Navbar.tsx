@@ -26,20 +26,20 @@ const Navbar = () => {
             <ul className="navbar-nav">
                 <li className="nav-item">
                     <Link
-                        to="/task-system"
+                        to="/tasking-system"
                         className={`nav-link ${activeLink === 0 ? 'active' : ''}`}
                         onClick={() => handleLinkClick(0)}
                     >
-                        Görev Ekle
+                        Görev
                     </Link>
                 </li>
                 <li className="nav-item">
                     <Link
-                        to="/project-system"
+                        to="/projecting-system"
                         className={`nav-link ${activeLink === 1 ? 'active' : ''}`}
                         onClick={() => handleLinkClick(1)}
                     >
-                        Proje Ekle
+                        Proje
                     </Link>
                 </li>
                 <li className="nav-item">
@@ -48,7 +48,8 @@ const Navbar = () => {
                         className={`nav-link ${activeLink === 2 ? 'active' : ''}`}
                         onClick={() => handleLinkClick(2)}
                     >
-                        Rapor Ekle
+                        Rapor
+
                     </Link>
                 </li>
                 <li className="nav-item nav-item-right">

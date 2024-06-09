@@ -6,5 +6,4 @@ export default interface GetListTaskResponse {
     description: string;
     status: string;
     createdDate: Date;
-    updatedDate: Date;
 }

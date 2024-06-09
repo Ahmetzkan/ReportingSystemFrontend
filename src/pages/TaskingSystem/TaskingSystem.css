@@ -1,0 +1,123 @@
+.taskingSystem {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 50px;
+  }
+  
+  .task-form {
+    width: 80%;
+    border: 1px solid #ccc;
+    border-radius: 15px;
+    padding: 20px;
+    margin-bottom: 20px;
+  }
+  
+  .task-form h6 {
+    margin-bottom: 10px;
+  }
+  
+  .task-form .form-group {
+    margin-bottom: 10px;
+    font-weight: 500;
+  }
+  
+  .task-form .form-control {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 15px;
+  }
+  
+  .task-form .btn-primary {
+    padding: 10px;
+    background-color: #f86434;
+    border: none;
+  }
+  
+  .task-form .btn-primary:hover {
+    background-color: rgb(99, 100, 150);
+  }
+  
+  .task-list {
+    width: 80%;
+    border: 1px solid #ccc;
+    border-radius: 15px;
+    padding: 10px;
+  }
+  
+  .task-list h6 {
+    margin-bottom: 10px;
+  }
+  
+  .task-item {
+    border: 1px solid #ccc;
+    border-radius: 15px;
+    height: auto;
+    margin-bottom: 10px;
+    font-weight: 600;
+    text-align: left;
+    padding: 10px;
+  }
+  
+  .task-item h6 {
+    font-weight: 500;
+    font-size: 25px;
+  }
+  
+  .pagination {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+  }
+  
+  .pagination-list {
+    display: flex;
+  }
+  
+  .page-item {
+    margin: 0 5px;
+  }
+  
+  .page-link {
+    display: block;
+    padding: 6px 12px;
+    text-decoration: none;
+    color: black;
+    background-color: #fff;
+    border: 1px solid black;
+  }
+  
+  .page-link:hover {
+    background-color: black;
+    color: #fff;
+  }
+  
+  .modal-dialog {
+    display: flex;
+    align-items: center;
+    min-height: calc(70vh);
+    padding: 20px;
+  }
+  
+  .modal-content {
+    margin: auto;
+  }
+  
+  .btn-primary {
+    background-color: #f86434;
+    color: white;
+    margin-top: 10px;
+    border: none;
+  }
+  
+  .btn-primary:hover {
+    background-color: rgb(99, 100, 150);
+  }
+  
+  .task-actions {
+    display: flex;
+    margin-bottom: 20px;
+    gap: 10px;
+  }
+  

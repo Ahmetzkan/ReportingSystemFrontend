@@ -5,12 +5,12 @@ import "./ReportingSystem.css";
 import GetListProjectResponse from "../../models/responses/project/getListProjectResponse";
 import GetListTaskResponse from "../../models/responses/task/getListTaskResposnse";
 import GetListReportResponse from "../../models/responses/report/getListReportResponse";
+import DeleteReportRequest from "../../models/requests/report/deleteReportRequest";
 import reportService from "../../services/reportService";
 import taskService from "../../services/taskService";
 import projectService from "../../services/projectService";
 import { FaEdit, FaTrash } from "react-icons/fa";
 import { Modal, Button } from "react-bootstrap";
-import DeleteReportRequest from "../../models/requests/report/deleteReportRequest";
 
 const ReportingSystem = () => {
   const [currentPage, setCurrentPage] = useState(1);
@@ -92,7 +92,6 @@ const ReportingSystem = () => {
     setShowModal(false);
   };
 
-
   const paginate = (pageNumber: number) => setCurrentPage(pageNumber);
 
   const handleTypeChange = (e: React.ChangeEvent<HTMLSelectElement>, setFieldValue: (field: string, value: any) => void) => {
@@ -128,12 +127,7 @@ const ReportingSystem = () => {
         setReports(updatedReports);
         setFilteredReports(updatedReports);
       })
-      .catch((error) => {
-        console.error("Rapor silinirken bir hata oluştu:", error);
-      });
   };
-
-
 
   const handleAddNew = () => {
     setEditReport(null);
@@ -190,7 +184,7 @@ const ReportingSystem = () => {
         const fieldB = (b.title || "").toLowerCase();
         return filter.sortOrder === "asc" ? fieldA.localeCompare(fieldB) : fieldB.localeCompare(fieldA);
       }
-      return 0; 
+      return 0;
     });
 
     setFilteredReports(filtered);
@@ -203,41 +197,30 @@ const ReportingSystem = () => {
           Yeni Rapor Ekle
         </Button>
         <div className="filter-container">
-          <input
-            type="text"
-            name="search"
-            placeholder="Başlık veya İsim ile Ara..."
-            value={filter.search}
-            onChange={handleFilterChange}
+          <input type="text" name="search" placeholder="Başlık veya İsim ile Ara..."
+            value={filter.search} onChange={handleFilterChange}
             className="form-control mb-2"
           />
           <input
-            type="date"
-            name="startDate"
-            placeholder="Başlangıç Tarihi"
-            value={filter.startDate}
-            onChange={handleFilterChange}
+            type="date" name="startDate" placeholder="Başlangıç Tarihi"
+            value={filter.startDate} onChange={handleFilterChange}
             className="form-control mb-2"
           />
           <input
-            type="date"
-            name="endDate"
-            placeholder="Bitiş Tarihi"
-            value={filter.endDate}
-            onChange={handleFilterChange}
+            type="date" name="endDate" placeholder="Bitiş Tarihi"
+            value={filter.endDate} onChange={handleFilterChange}
             className="form-control mb-2"
           />
           <select
-            name="sortField"
-            value={filter.sortField}
-            onChange={handleFilterChange}
-            className="form-control mb-2"
+            name="sortField" value={filter.sortField}
+            onChange={handleFilterChange} className="form-control mb-2"
           >
             <option value="createdDate">Oluşturulma Tarihine Göre (Yeni'den Eski'ye)</option>
             <option value="createdDate_desc">Oluşturulma Tarihine Göre (Eski'den Yeni'ye)</option>
             <option value="title">Başlığa Göre (Z'den A'ya)</option>
             <option value="title_desc">Başlığa Göre (A'dan Z'ye)</option>
           </select>
+
         </div>
         <Modal show={showModal} onHide={() => setShowModal(false)}>
           <Modal.Header closeButton>
@@ -251,58 +234,39 @@ const ReportingSystem = () => {
                 itemId: editReport?.projectId || editReport?.taskId || "",
                 options: []
               }}
-              validationSchema={validationSchema}
-              onSubmit={onSubmit}
-              enableReinitialize
+              validationSchema={validationSchema} onSubmit={onSubmit} enableReinitialize
             >
               {({ touched, errors, setFieldValue }) => (
                 <Form>
                   <div className="form-group">
                     <label htmlFor="title">Rapor Başlığı:</label>
                     <Field
-                      type="text"
-                      name="title"
-                      id="title"
+                      type="text" name="title" id="title"
                       className={
-                        "form-control" +
-                        (errors.title && touched.title ? " is-invalid" : "")
+                        "form-control" + (errors.title && touched.title ? " is-invalid" : "")
                       }
-                    />
+                    />""
                     <ErrorMessage
-                      name="title"
-                      component="div"
-                      className="invalid-feedback"
+                      name="title" component="div" className="invalid-feedback"
                     />
                   </div>
 
                   <div className="form-group">
                     <label htmlFor="content">Rapor İçeriği:</label>
                     <Field
-                      as="textarea"
-                      name="content"
-                      id="content"
-                      rows="2"
-                      className={
-                        "form-control"
-                        +
-                        (errors.content && touched.content ? " is-invalid" : "")
-                      }
+                      as="textarea" name="content" id="content" rows="2"
+                      className={"form-control" + (errors.content && touched.content ? " is-invalid" : "")}
                     />
                     <ErrorMessage
-                      name="content"
-                      component="div"
-                      className="invalid-feedback"
+                      name="content" component="div" className="invalid-feedback"
                     />
                   </div>
 
                   <div className="form-group">
                     <label htmlFor="type">Görev veya Proje Seçiniz:</label>
                     <select
-                      name="type"
-                      id="type"
-                      className="form-control"
-                      value={selectedType}
-                      onChange={(e) => handleTypeChange(e, setFieldValue)}
+                      name="type" id="type" className="form-control"
+                      value={selectedType} onChange={(e) => handleTypeChange(e, setFieldValue)}
                     >
                       <option value="">Seçiniz</option>
                       <option value="task">Görev</option>
@@ -313,13 +277,8 @@ const ReportingSystem = () => {
                   <div className="form-group">
                     <label htmlFor="itemId">Seçenek:</label>
                     <Field
-                      as="select"
-                      name="itemId"
-                      id="itemId"
-                      className={
-                        "form-control" +
-                        (errors.itemId && touched.itemId ? " is-invalid" : "")
-                      }
+                      as="select" name="itemId" id="itemId"
+                      className={"form-control" + (errors.itemId && touched.itemId ? " is-invalid" : "")}
                       disabled={!selectedType}
                     >
                       <option value="">Seçiniz</option>
@@ -329,11 +288,7 @@ const ReportingSystem = () => {
                         </option>
                       ))}
                     </Field>
-                    <ErrorMessage
-                      name="itemId"
-                      component="div"
-                      className="invalid-feedback"
-                    />
+                    <ErrorMessage name="itemId" component="div" className="invalid-feedback" />
                   </div>
 
                   <Button type="submit" className="btn btn-primary">
@@ -347,7 +302,7 @@ const ReportingSystem = () => {
       </div>
 
       <div className="report-list">
-        <h2>Kaydedilen Raporlar</h2>
+        <h2>Raporlar</h2>
         <ul>
           {filteredReports.slice((currentPage - 1) * reportsPerPage, currentPage * reportsPerPage).map((report, index) => (
             <li key={index} className="report-item">
