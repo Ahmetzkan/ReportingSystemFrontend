@@ -6,4 +6,6 @@ export default interface UpdateUserRequest {
     lastName: string;
     email: string;
     password: string;
+    tcNo: string;
+    birthDate: Date;
 }

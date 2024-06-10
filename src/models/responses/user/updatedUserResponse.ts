@@ -5,4 +5,6 @@ export default interface UpdatedUserResponse {
     firstName: string;
     lastName: string;
     email: string;
+    tcNo: string;
+    birthDate: Date;
 }

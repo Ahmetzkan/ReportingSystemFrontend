@@ -5,4 +5,6 @@ export default interface AddedUserResponse {
     firstName: string;
     lastName: string;
     email: string;
+    tcNo: string;
+    birthDate: Date;
 }

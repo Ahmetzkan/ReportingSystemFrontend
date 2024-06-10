@@ -245,10 +245,8 @@ const ReportingSystem = () => {
                       className={
                         "form-control" + (errors.title && touched.title ? " is-invalid" : "")
                       }
-                    />""
-                    <ErrorMessage
-                      name="title" component="div" className="invalid-feedback"
                     />
+                    <ErrorMessage name="title" component="div" className="invalid-feedback" />
                   </div>
 
                   <div className="form-group">

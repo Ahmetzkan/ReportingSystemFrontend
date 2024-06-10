@@ -6,4 +6,6 @@ export default interface GetListUserResponse {
     lastName: string;
     email: string;
     roleName: string;
+    tcNo: string;
+    birthDate: Date;
 }

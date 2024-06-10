@@ -53,18 +53,14 @@ const ProjectingSystem = () => {
             createdDate: values.createdDate || currentDate.toISOString(),
         };
 
-        try {
-            if (editProject) {
-                await projectService.update(newProject);
-                setProjects(projects.map(p => p.id === newProject.id ? newProject : p));
-                setFilteredProjects(filteredProjects.map(p => p.id === newProject.id ? newProject : p));
-            } else {
-                await projectService.add(newProject);
-                setProjects([...projects, newProject]);
-                setFilteredProjects([...filteredProjects, newProject]);
-            }
-        } catch (error) {
-            console.error("Error updating/adding project:", error);
+        if (editProject) {
+            await projectService.update(newProject);
+            setProjects(projects.map(p => p.id === newProject.id ? newProject : p));
+            setFilteredProjects(filteredProjects.map(p => p.id === newProject.id ? newProject : p));
+        } else {
+            await projectService.add(newProject);
+            setProjects([...projects, newProject]);
+            setFilteredProjects([...filteredProjects, newProject]);
         }
         setShowModal(false);
     };
@@ -196,73 +192,48 @@ const ProjectingSystem = () => {
                                     <div className="form-group">
                                         <label htmlFor="name">Proje Adı:</label>
                                         <Field
-                                            type="text"
-                                            name="name"
-                                            id="name"
+                                            type="text" name="name" id="name"
                                             className={
-                                                "form-control" +
-                                                (errors.name && touched.name ? " is-invalid" : "")
+                                                "form-control" + (errors.name && touched.name ? " is-invalid" : "")
                                             }
                                         />
-                                        <ErrorMessage
-                                            name="name"
-                                            component="div"
-                                            className="invalid-feedback"
-                                        />
+                                        <ErrorMessage name="name" component="div" className="invalid-feedback" />
+
                                     </div>
 
                                     <div className="form-group">
                                         <label htmlFor="status">Proje Durumu:</label>
                                         <Field
-                                            type="text"
-                                            name="status"
-                                            id="status"
-                                            className={
-                                                "form-control" +
-                                                (errors.status && touched.status ? " is-invalid" : "")
+                                            type="text" name="status" id="status" className={
+                                                "form-control" + (errors.status && touched.status ? " is-invalid" : "")
                                             }
                                         />
-                                        <ErrorMessage
-                                            name="status"
-                                            component="div"
-                                            className="invalid-feedback"
-                                        />
+                                        <ErrorMessage name="status" component="div" className="invalid-feedback" />
+
                                     </div>
 
                                     <div className="form-group">
                                         <label htmlFor="startDate">Başlangıç Tarihi:</label>
                                         <Field
-                                            type="date"
-                                            name="startDate"
-                                            id="startDate"
+                                            type="date" name="startDate" id="startDate"
                                             className={
-                                                "form-control" +
-                                                (errors.startDate && touched.startDate ? " is-invalid" : "")
+                                                "form-control" + (errors.startDate && touched.startDate ? " is-invalid" : "")
                                             }
                                         />
                                         <ErrorMessage
-                                            name="startDate"
-                                            component="div"
-                                            className="invalid-feedback"
+                                            name="startDate" component="div" className="invalid-feedback"
                                         />
                                     </div>
 
                                     <div className="form-group">
                                         <label htmlFor="endDate">Bitiş Tarihi:</label>
                                         <Field
-                                            type="date"
-                                            name="endDate"
-                                            id="endDate"
+                                            type="date" name="endDate" id="endDate"
                                             className={
-                                                "form-control" +
-                                                (errors.endDate && touched.endDate ? " is-invalid" : "")
+                                                "form-control" + (errors.endDate && touched.endDate ? " is-invalid" : "")
                                             }
                                         />
-                                        <ErrorMessage
-                                            name="endDate"
-                                            component="div"
-                                            className="invalid-feedback"
-                                        />
+                                        <ErrorMessage name="endDate" component="div" className="invalid-feedback" />
                                     </div>
 
                                     <Button type="submit" className="btn btn-primary">

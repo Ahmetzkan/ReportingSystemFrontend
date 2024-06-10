@@ -33,7 +33,6 @@ export class BaseService<
         return axiosInstance.put<UpdateResponseType>(this.apiUrl + "/Update", request);
     }
 
-
     delete(request: DeleteRequestType): Promise<AxiosResponse<DeleteResponseType, any>> {
         return axiosInstance.delete<DeleteResponseType>(this.apiUrl + "/Delete", { data: request });
     }

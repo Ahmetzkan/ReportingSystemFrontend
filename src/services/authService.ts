@@ -35,20 +35,20 @@ class AuthService {
             'http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier': userId,
             email,
             'http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name': name,
-/*             'http://schemas.microsoft.com/ws/2008/06/identity/claims/role': role
- */        } = tokenDetails;
+            'http://schemas.microsoft.com/ws/2008/06/identity/claims/role': role
+        } = tokenDetails;
+
 
         let nameParts = name.split(' ');
-
-        let firstname = nameParts[0];
-        let lastname = nameParts.slice(1).join(' ');
+        let lastname = nameParts.pop() || '';
+        let firstname = nameParts.join(' ');
 
         const user: any = {
             id: userId,
             firstName: firstname,
             lastName: lastname,
             email: email,
-           /*  role: role */
+            role: role
         };
 
         return user;

@@ -17,13 +17,15 @@ const Register = () => {
     <div className='general register-general'>
       <div className="container register-container">
         <Formik
-          initialValues={{ firstName: '', lastName: '', email: '', password: '', confirmPassword: '' }}
+          initialValues={{ firstName: '', lastName: '', email: '', password: '', confirmPassword: '', tcNo: '', birthDate: '' }}
           validationSchema={Yup.object({
             firstName: Yup.string().required('Doldurulması zorunludur.'),
             lastName: Yup.string().required('Doldurulması zorunludur.'),
             email: Yup.string().email('Geçersiz email adresi.').required('Doldurulması zorunludur.'),
             password: Yup.string().min(5, 'Parola en az 5 karakterli olmalıdır.').required('Doldurulması zorunludur.'),
-            confirmPassword: Yup.string().oneOf([Yup.ref('password'), ''], 'Parolalar eşleşmiyor.').required('Doldurulması zorunludur.')
+            confirmPassword: Yup.string().oneOf([Yup.ref('password'), ''], 'Parolalar eşleşmiyor.').required('Doldurulması zorunludur.'),
+            tcNo: Yup.string().length(11, 'TC Kimlik numarası 11 haneli olmalıdır.').required('Doldurulması zorunludur.'),
+            birthDate: Yup.date().required('Doldurulması zorunludur.')
           })}
           onSubmit={(values) => {
             authService.register(values).then(response => {
@@ -64,6 +66,16 @@ const Register = () => {
               <label htmlFor="confirmPassword"></label>
               <Field name="confirmPassword" type="password" className="form-control" placeholder="Parola tekrarı" />
               <ErrorMessage name="confirmPassword" component="div" className="text-danger" />
+            </div>
+            <div className="mb-3">
+              <label htmlFor="tcNo"></label>
+              <Field name="tcNo" type="text" className="form-control" placeholder="Tc No (Kimlik doğrulama için gerekli)" />
+              <ErrorMessage name="tcNo" component="div" className="text-danger" />
+            </div>
+            <div className="mb-3">
+              <label htmlFor="birthDate">Doğum Tarihiniz</label>
+              <Field name="birthDate" type="date" className="form-control" />
+              <ErrorMessage name="birthDate" component="div" className="text-danger" />
             </div>
             <button type="submit" className="btn register-btn">Kayıt ol</button>
           </Form>
